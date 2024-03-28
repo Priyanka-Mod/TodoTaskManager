@@ -11,7 +11,6 @@ const ToDoListScreen = () => {
     const [taskItem , setTaskItem] = useState<{id:string , task:string}>({id:'',task:""})
     const dispatch = useDispatch();
     const list = useSelector(state => state.todoList);
-    console.log("state",list)
     const onAddTask=()=> {
         let add = {
             id:Date.now().toString(36) + Math.random().toString(36).substr(2),
@@ -27,12 +26,9 @@ const ToDoListScreen = () => {
         setEdit(true)
         setValue(item.task)
         setTaskItem(item)
-        console.log(taskItem)
     }
     const onUpdateTask = () => {
         let updatedTask = {...taskItem , task: value}
-        
-        console.log("updatevalue" , updatedTask)
         
         dispatch(editTask(updatedTask))
         setValue('')
